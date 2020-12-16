@@ -1,3 +1,4 @@
+import { notification } from 'antd';
 import axios from 'axios';
 import LocalStorageService from '../services/localStorageService';
 
@@ -20,4 +21,20 @@ axios.interceptors.request.use(
 
 )
 
+axios.interceptors.response.use(
+    response => {
+        return response
+    },
+    err => {
+        if(err.response && err.response.status === 401){
+            LocalStorageService.removeToken();
+            window.location.reload();
+            notification.err({
+                message: "กรุณาเข้าสู่ระบบใหม่"
+            });
+            return Promise.reject();
+        }
+        return Promise.reject();
+    }
+)
 export default axios;
