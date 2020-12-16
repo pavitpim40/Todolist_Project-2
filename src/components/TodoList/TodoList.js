@@ -21,6 +21,7 @@ export default function TodoList() {
 
     const addTodoItem = async () => {
         await axios.post("/todo-list", { task: inputField });
+        setInputField("");
         fetchTodoList();
     };
 
