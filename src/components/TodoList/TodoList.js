@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Typography, List, Input, Button, Row, Col, Divider } from 'antd';
 import axios from '../../config/axios';
 import Todo from './Todo';
+import { Link } from 'react-router-dom';
 
 const { Text } = Typography;
 
@@ -31,6 +32,9 @@ export default function TodoList() {
     return (
         <Row justify="center" style={{margin: "50px"}}>
             <Col>
+            <Row justify="center">
+                <Link to="/profile"><Button>Profile</Button></Link>
+            </Row>
                 <Row>
                     <Text type="primary">กรุณาใส่ Todo ที่ต้องการเพิ่ม</Text>
                 </Row>
